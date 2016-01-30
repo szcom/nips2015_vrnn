@@ -83,18 +83,22 @@ def fetch_blizzard(data_path, shuffle=0, sz=32000, file_name="full_blizzard.h5")
 def fetch_blizzard_tbptt(data_path, sz=8000, batch_size=100, file_name="blizzard_tbptt.h5"):
 
     hdf5_path = os.path.join(data_path, file_name)
+    print("looking for ", hdf5_path)
 
     if not os.path.exists(hdf5_path):
         data_matches = []
 
         for root, dir_names, file_names in os.walk(data_path):
-            for filename in fnmatch.filter(file_names, 'data_*.npy'):
+            for filename in fnmatch.filter(file_names, '*.npy'):
                 data_matches.append(os.path.join(root, filename))
 
         # sort in proper order
+	'''
         data_matches = sorted(data_matches,
                               key=lambda x: int(
                                   x.split("/")[-1].split("_")[-1][0]))
+        '''
+        # print(data_matches)
 
         # setup tables
         compression_filter = tables.Filters(complevel=5, complib='blosc')
@@ -109,6 +113,8 @@ def fetch_blizzard_tbptt(data_path, sz=8000, batch_size=100, file_name="blizzard
 
             with open(f) as fp:
                 # Array of arrays, ragged
+                large_d = np.load(fp)
+                '''
                 d = np.load(fp)
                 large_d = d[0]
 
@@ -120,7 +126,7 @@ def fetch_blizzard_tbptt(data_path, sz=8000, batch_size=100, file_name="blizzard
                         di = di[:, 0]
 
                     large_d = np.concatenate([large_d, di])
-
+                '''
                 chunk_size = int(np.float(len(large_d) / batch_size))
                 seg_d = segment_axis(large_d, chunk_size, 0)
                 num_batch = int(np.float((seg_d.shape[-1] - 1)/float(sz)))
@@ -139,7 +145,7 @@ def fetch_blizzard_tbptt(data_path, sz=8000, batch_size=100, file_name="blizzard
 
 
 if __name__ == "__main__":
-    data_path = '/raid/chungjun/data/blizzard/'
-    X = fetch_blizzard(data_path, 1)
+    data_path = os.path.expanduser('~/deep/blizzard/train/unsegmented/')
+    X = fetch_blizzard_tbptt(data_path)
     from IPython import embed; embed()
     raise ValueError()

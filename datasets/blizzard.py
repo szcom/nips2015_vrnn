@@ -4,7 +4,6 @@ import numpy as np
 import scipy.signal
 import theano
 import theano.tensor as T
-
 from cle.cle.data import TemporalSeries
 from cle.cle.data.prep import SequentialPrepMixin
 from cle.cle.utils import segment_axis, tolist, totuple
@@ -284,7 +283,7 @@ def is_power2(num):
 
 if __name__ == "__main__":
 
-    data_path = '/data/lisatmp3/chungjun/data/blizzard_unseg/'
+    data_path = os.path.expanduser('~/deep/blizzard/train/unsegmented/')
     frame_size = 200
     seq_len = 32000
     test_tbptt = 1
@@ -294,10 +293,16 @@ if __name__ == "__main__":
     if test_tbptt:
         seq_len = 8000
         file_name = 'blizzard_unseg_tbptt'
+        file_name = 'blizzard_tbptt'
         batch_size = 128
-        normal_params = np.load(data_path + file_name + '_normal.npz')
-        X_mean = normal_params['X_mean']
-        X_std = normal_params['X_std']
+        try:
+            normal_params = np.load(data_path + file_name + '_normal.npz')
+            X_mean = normal_params['X_mean']
+            X_std = normal_params['X_std']
+        except IOError:
+            X_mean = None
+            X_std = None
+            
         range_start = 0
         range_end = 2040000
 

@@ -2,7 +2,7 @@ import ipdb
 import numpy as np
 import theano
 import theano.tensor as T
-
+import os
 from cle.cle.cost import GMM, KLGaussianGaussian
 from cle.cle.data import Iterator
 from cle.cle.models import Model
@@ -33,8 +33,8 @@ def main(args):
     pkl_name = 'vrnn_gmm_%d' % trial
     channel_name = 'valid_nll_upper_bound'
 
-    data_path = args['data_path']
-    save_path = args['save_path']
+    data_path = os.path.expanduser(args['data_path'])
+    save_path = os.path.expanduser(args['save_path'])
 
     monitoring_freq = int(args['monitoring_freq'])
     force_saving_freq = int(args['force_saving_freq'])
@@ -62,7 +62,7 @@ def main(args):
     z2s_dim = 500
     target_dim = x_dim * k
 
-    file_name = 'blizzard_unseg_tbptt'
+    file_name = 'blizzard_tbptt'
     normal_params = np.load(data_path + file_name + '_normal.npz')
     X_mean = normal_params['X_mean']
     X_std = normal_params['X_std']
