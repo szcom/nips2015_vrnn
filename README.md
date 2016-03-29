@@ -16,7 +16,7 @@ There is a function that reads the numpy formatted files and generate a hdf5 for
 IWAE
 ----
 Importance Weighted Autoencoder adds multiple stochastic layers and novel objective function to the traditional VAE. In order to use IWAE approach in VRNN each sequence is repeated K times during the training. The hidden state is sampled K times from the same parameters. The objective is evaluated over 1..K hidden samples and then either averaged over K(VAE_K) or multiplied by its "importance weights"(IWAE_K). These two variants are compared to the performance of the original VRNN objective in terms of log likelihood on the held out data. IWAE with single stochastic layer and K=5 have beed evaluated with the following results:
-![VRNN vs IWAE_K vs VAE_K](https://github.com/szcomm/nips2015_vrnn/raw/master/recon.png)
+![VRNN vs IWAE_K vs VAE_K](https://github.com/szcom/nips2015_vrnn/raw/master/recon.png)
 
 VRNN | VAE_K | IWAE_K
 ----|-----|------
