@@ -20,10 +20,11 @@ Importance Weighted Autoencoder adds multiple stochastic layers and novel object
 
 VRNN | VAE_K | IWAE_K
 ----|-----|------
-vrnn_gauss.py | vrnn_gauss_alt_nll.py | vrnn_gauss_iwae.py
+[vrnn_gauss.py](https://github.com/szcom/nips2015_vrnn/raw/master/models/blizzard/vrnn_gauss.py) | [vrnn_gauss_alt_nll.py](https://github.com/szcom/nips2015_vrnn/raw/master/models/blizzard/vrnn_gauss_alt_nll.py) | [vrnn_gauss_iwae.py](https://github.com/szcom/nips2015_vrnn/raw/master/models/blizzard/vrnn_gauss_iwae.py)
 
-The sequence duration and RNN layer size were cut short to 0.5s and 1000 hidden units respectively. IWAE implementation used in this experiment and done by Yuri Burda can be found[here](https://github.com/yburda/iwae/blob/master/iwae.py)
+The audio sequence duration and RNN layer size were cut short to 0.5s and 1000 hidden units respectively. 
+IWAE implementation used in this experiment comes from Yuri Burda and can be found [here](https://github.com/yburda/iwae/blob/master/iwae.py)
 
-What went wrong?
+Remarks
 ----------------
-Lower bound suggested by IWAE failed to capture data structure better than original one from VRNN. On MNIST VAE_K was outperfomed by IWAE by almost 1 nat (86.47 vs 85.54) but the opposite happened in VRNN setting. 
+Lower bound suggested by IWAE_K did not improve VRNN performance. On MNIST VAE_K was outperfomed by IWAE_K with K=5 by almost 1 nat (86.47 vs 85.54) but the opposite happened in this VRNN experiment with audio data.
