@@ -12,7 +12,8 @@ The original Blizzard dataset should be downloaded by each user due to the licen
 http://www.synsig.org/index.php/Blizzard_Challenge_2013<br>
 The original wave files have been read by numpy and saved into '.npz' format.
 There is a function that reads the numpy formatted files and generate a hdf5 format file.
-
+Here is the [tool to convert mp3 to wav and npy, 16kHz, 16bits LE](./mp3_to_wav_and_npy.py)
+ 
 IWAE
 ----
 Importance Weighted Autoencoder adds multiple stochastic layers and novel objective function to the traditional VAE. In order to use IWAE approach in VRNN each sequence is repeated K times during the training. The hidden state is sampled K times from the same parameters. The objective is evaluated over 1..K hidden samples and then either averaged over K(VAE_K) or multiplied by its "importance weights"(IWAE_K). These two variants are compared to the performance of the original VRNN objective in terms of log likelihood on the held out data. IWAE with single stochastic layer and K=5 have beed evaluated with the following results:
