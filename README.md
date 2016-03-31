@@ -21,7 +21,7 @@ Importance Weighted Autoencoder adds multiple stochastic layers and novel object
 
 VRNN | VAE_K | IWAE_K
 ----|-----|------
-[vrnn_gauss.py](https://github.com/szcom/nips2015_vrnn/raw/master/models/blizzard/vrnn_gauss.py) | [vrnn_gauss_alt_nll.py](https://github.com/szcom/nips2015_vrnn/raw/master/models/blizzard/vrnn_gauss_alt_nll.py) | [vrnn_gauss_iwae.py](https://github.com/szcom/nips2015_vrnn/raw/master/models/blizzard/vrnn_gauss_iwae.py)
+[vrnn_gauss.py](./models/blizzard/vrnn_gauss.py) | [vrnn_gauss_alt_nll.py](./models/blizzard/vrnn_gauss_alt_nll.py) | [vrnn_gauss_iwae.py](./models/blizzard/vrnn_gauss_iwae.py)
 
 The audio sequence duration and RNN layer size were cut short to 0.5s and 1000 hidden units respectively. 
 IWAE implementation used in this experiment comes from Yuri Burda and can be found [here](https://github.com/yburda/iwae/blob/master/iwae.py)
