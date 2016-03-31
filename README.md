@@ -1,5 +1,5 @@
 # Variational Recurrent Neural Networks and Importance Weights Sampling
-This is an experiment to apply results from ["Importance Weighted Autoencoders"](http://arxiv.org/abs/1509.00519) to an  implementation of the paper ["A Recurrent Latent Variable Model for Sequential Data"](http://arxiv.org/abs/1506.02216)
+This is an experiment to train ["A Recurrent Latent Variable Model for Sequential Data"](http://arxiv.org/abs/1506.02216) using the lower bound proposed by ["Importance Weighted Autoencoders"](http://arxiv.org/abs/1509.00519) 
 
 Dependencies
 ------------
